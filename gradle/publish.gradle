@@ -63,6 +63,7 @@ publishing {
                     password = publishingPassword
                 }
             }
+           allowInsecureProtocol = true
         }
         maven { name = "testLocal"; url = "$rootProject.buildDir/m2" }
     }
