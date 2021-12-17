@@ -44,7 +44,9 @@ fun isAvailableForPublication(publication: Publication): Boolean {
         "tvosSimulatorArm64",
 
         "macosX64",
-        "macosArm64"
+        "macosArm64",
+        "linuxX64",
+        "mingwX64"
     )
 
     result = result || (HOST_NAME == "macos" && name in macPublications)
@@ -86,7 +88,7 @@ fun Project.configurePublication() {
             }
             maven {
                 name = "testLocal"
-                setUrl("$rootProject.buildDir/m2")
+                setUrl("${rootProject.buildDir}/m2")
             }
         }
 
