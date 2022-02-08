@@ -183,7 +183,7 @@ public val CallId: RouteScopedPlugin<CallIdConfig> = createRouteScopedPlugin(
     val providers = (pluginConfig.retrievers + pluginConfig.generators).toTypedArray()
     val repliers = pluginConfig.responseInterceptors.toTypedArray()
     val verifier = pluginConfig.verifier
-    val logger by lazy { KtorSimpleLogger("CallId") }
+//    val logger by lazy { KtorSimpleLogger("CallId") }
 
     on(CallSetup) { call ->
         for (provider in providers) {
@@ -199,14 +199,14 @@ public val CallId: RouteScopedPlugin<CallIdConfig> = createRouteScopedPlugin(
         }
     }
 
-    on(CallFailed) { call, cause ->
-        if (cause !is RejectedCallIdException) return@on
-        logger.warn(
-            "Illegal call id retrieved or generated that is rejected by call id verifier: (url-encoded) " +
-                cause.illegalCallId.encodeURLParameter()
-        )
-        call.respond(HttpStatusCode.BadRequest)
-    }
+//    on(CallFailed) { call, cause ->
+//        if (cause !is RejectedCallIdException) return@on
+//        logger.warn(
+//            "Illegal call id retrieved or generated that is rejected by call id verifier: (url-encoded) " +
+//                cause.illegalCallId.encodeURLParameter()
+//        )
+//        call.respond(HttpStatusCode.BadRequest)
+//    }
 }
 
 /**

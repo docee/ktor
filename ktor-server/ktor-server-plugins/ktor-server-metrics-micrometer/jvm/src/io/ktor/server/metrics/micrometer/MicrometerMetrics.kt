@@ -134,10 +134,10 @@ public val MicrometerMetrics: ApplicationPlugin<MicrometerMetricsConfig> =
             )
         }
 
-        on(CallFailed) { call, cause ->
-            call.attributes.getOrNull(measureKey)?.throwable = cause
-            throw cause
-        }
+//        on(CallFailed) { call, cause ->
+//            call.attributes.getOrNull(measureKey)?.throwable = cause
+//            throw cause
+//        }
 
         environment!!.monitor.subscribe(Routing.RoutingCallStarted) { call ->
             call.attributes[measureKey].route = call.route.parent.toString()

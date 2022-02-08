@@ -43,7 +43,7 @@ public val DropwizardMetrics: ApplicationPlugin<DropwizardMetricsConfig> =
     createApplicationPlugin("DropwizardMetrics", ::DropwizardMetricsConfig) {
         val duration = pluginConfig.registry.timer(name(pluginConfig.baseName, "duration"))
         val active = pluginConfig.registry.counter(name(pluginConfig.baseName, "active"))
-        val exceptions = pluginConfig.registry.meter(name(pluginConfig.baseName, "exceptions"))
+//        val exceptions = pluginConfig.registry.meter(name(pluginConfig.baseName, "exceptions"))
         val httpStatus = ConcurrentHashMap<Int, Meter>()
 
         if (pluginConfig.registerJvmMetricSets) {
@@ -58,9 +58,9 @@ public val DropwizardMetrics: ApplicationPlugin<DropwizardMetricsConfig> =
             }.forEach { (name, metric) -> pluginConfig.registry.register(name, metric()) }
         }
 
-        on(CallFailed) { _, _ ->
-            exceptions.mark()
-        }
+//        on(CallFailed) { _, _ ->
+//            exceptions.mark()
+//        }
 
         on(MonitoringEvent(Routing.RoutingCallStarted)) { call ->
             val name = call.route.toString()

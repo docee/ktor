@@ -47,19 +47,19 @@ public val StatusPages: ApplicationPlugin<StatusPagesConfig> = createApplication
         }
     }
 
-    on(CallFailed) { call, cause ->
-        if (call.attributes.contains(statusPageMarker)) return@on
-
-        val handler = findHandlerByValue(cause)
-        handler ?: throw cause
-
-        call.attributes.put(statusPageMarker, Unit)
-        handler(call, cause)
-
-        if (!call.isHandled) {
-            throw cause
-        }
-    }
+//    on(CallFailed) { call, cause ->
+//        if (call.attributes.contains(statusPageMarker)) return@on
+//
+//        val handler = findHandlerByValue(cause)
+//        handler ?: throw cause
+//
+//        call.attributes.put(statusPageMarker, Unit)
+//        handler(call, cause)
+//
+//        if (!call.isHandled) {
+//            throw cause
+//        }
+//    }
 }
 
 /**
