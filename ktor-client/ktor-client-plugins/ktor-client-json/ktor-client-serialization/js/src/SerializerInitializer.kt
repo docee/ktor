@@ -9,7 +9,6 @@ import io.ktor.util.*
 @OptIn(ExperimentalStdlibApi::class)
 @InternalAPI
 @Suppress("unused", "DEPRECATION")
-@EagerInitialization
 public val initializer: SerializerInitializer = SerializerInitializer
 
 @InternalAPI
